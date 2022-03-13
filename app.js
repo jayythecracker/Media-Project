@@ -1,16 +1,24 @@
 require('dotenv').config();
-
+const path = require('path');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const fileUpload = require('express-fileupload')
 
 mongoose.connect(`mongodb://127.0.0.1:27017/${process.env.DB_NAME}`);
 
-
 app.use(express.json());
+app.use(fileUpload());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 const userRoute = require('./routes/user');
 const postRoute = require('./routes/post');
+const { saveFile, saveFiles, deleteFile } = require('./utils/gallery');
+
+
+app.post('/gallery', saveFiles, async (req, res, next) => {
+   res.status(200).json({ msg: "Files Uploade", filenames: req.body.images });
+})
 
 app.use("/users", userRoute);
 app.use("/posts", postRoute);
