@@ -11,15 +11,11 @@ app.use(express.json());
 app.use(fileUpload());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+const catRoute = require('./routes/cat');
 const userRoute = require('./routes/user');
 const postRoute = require('./routes/post');
-const { saveFile, saveFiles, deleteFile } = require('./utils/gallery');
 
-
-app.post('/gallery', saveFiles, async (req, res, next) => {
-   res.status(200).json({ msg: "Files Uploade", filenames: req.body.images });
-})
-
+app.use('/cats', catRoute);
 app.use("/users", userRoute);
 app.use("/posts", postRoute);
 
