@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload')
+mongoose.set('strictQuery', false);
 //H7phtdVEZTswlTbd
 mongoose.connect(`mongodb+srv://jayythecracker:H7phtdVEZTswlTbd@jayy.ryk5chg.mongodb.net/?retryWrites=true&w=majority&appName=jayy`);
 
