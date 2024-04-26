@@ -35,9 +35,16 @@ const patch = async (req, res, next) => {
 }
 const drop = async (req, res, next) => {
    let post = await DB.findById(req.params.id);
+
    if (post) {
-      await DB.findByIdAndDelete(post._id);
-      Helper.fMsg(res, "Post Deleted");
+      if(post.user._id.toString()===req.body.user._id.toString()){
+ await DB.findByIdAndDelete(post._id);
+ Helper.fMsg(res, "Post Deleted");
+      }else{
+         next(new Error('You cant delete other post!'));
+      }
+      
+     
    } else {
       next(new Error("No post with that id"));
    }
