@@ -5,11 +5,8 @@ const app = express();
 const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload')
 mongoose.set('strictQuery', false);
-
+//H7phtdVEZTswlTbd
 mongoose.connect("mongodb+srv://jayythecracker:H7phtdVEZTswlTbd@jayy.ryk5chg.mongodb.net/?retryWrites=true&w=majority&appName=jayy");
-
-
-//mongoose.connect(`mongodb://127.0.0.1:27017/${process.env.DB_NAME}`);
 
 app.use(express.json());
 app.use(fileUpload());
