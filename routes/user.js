@@ -1,31 +1,11 @@
 const router = require('express').Router();
-
-router.get("/", (req, res) => {
-   res.json({ msg: "All Users" });
-});
-router.post("/", (req, res) => {
-   res.json(req.body);
-});
-
-router.route("/:id")
-   .get((req, res) => res.json({ msg: "Request id is " + req.params.id }))
-   .patch((req, res) => res.json({ msg: "Edit id is " + req.params.id }))
-   .delete((req, res) => res.json({ msg: "Delete id is " + req.params.id }));
+const controller = require('../controllers/user');
+const { RegisterSchema } = require('../utils/schema');
+const { validateBody } = require('../utils/validator');
 
 
-// router.get("/:id", (req, res) => {
-//    let id = req.params.id;
-//    res.json({ msg: "Request id is " + id });
-// });
+router.post("/", controller.login);
+router.post("/register", [validateBody(RegisterSchema), controller.register]);
 
-// router.patch("/:id", (req, res) => {
-//    let id = req.params.id;
-//    res.json({ msg: "Edit id is " + id });
-// })
-
-// router.delete("/:id",(req,res)=> {
-//    let id = req.params.id;
-//    res.json({ msg: "Delete id is " + id });
-// })
 
 module.exports = router;
