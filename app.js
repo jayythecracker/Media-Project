@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload')
 mongoose.set('strictQuery', false);
 //H7phtdVEZTswlTbd
-mongoose.connect("postgres://media_esuy_user:RqGKzc5F5EAfi0k2kJjwRBRxWbxT3tz3@dpg-coluqj20si5c73fagkr0-a/media_esuy");
+mongoose.connect("mongodb+srv://jayythecracker:H7phtdVEZTswlTbd@jayy.ryk5chg.mongodb.net/?retryWrites=true&w=majority&appName=jayy");
 
 
 app.use(express.json());
