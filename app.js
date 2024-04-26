@@ -7,7 +7,7 @@ const fileUpload = require('express-fileupload')
 mongoose.set('strictQuery', false);
 
 
-mongoose.connect(`mongodb://127.0.0.1:27017/${process.env.DB_NAME}`);
+mongoose.connect(`mongodb://54.254.237.32:27017/${process.env.DB_NAME}`);
 
 app.use(express.json());
 app.use(fileUpload());
