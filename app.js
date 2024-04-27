@@ -26,7 +26,8 @@ app.use((err, req, res, next) => {
       cons: false,
       msg: err.message
    })
-})
+});
+app.get('*',(req,res,next)=>res.status(404).json("helloworld"));
 
 app.listen(process.env.PORT, console.log(`Server is running at port ${process.env.PORT}`));
 
