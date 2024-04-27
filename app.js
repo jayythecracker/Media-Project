@@ -23,7 +23,7 @@ app.use("/posts", postRoute);
 app.use((err, req, res, next) => {
    err.status = err.sattus || 200;
    res.status(err.status).json({
-      cons: false,
+      con: false,
       msg: err.message
    })
 });
